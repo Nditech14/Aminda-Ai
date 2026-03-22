@@ -105,6 +105,9 @@
 <!-- ═══════════════════ TOAST ═══════════════════ -->
 <div class="toast-container" id="toastContainer"></div>
 
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <!-- ═══════════════════ MAIN APP ═══════════════════ -->
 <div class="app hidden" id="mainApp">
 
@@ -400,5 +403,20 @@
 </div><!-- /app -->
 
 <script type="module" src="js/app.js"></script>
+
+<!-- iOS Safari keyboard fix: resize app when virtual keyboard opens -->
+<script>
+  // Use visualViewport API to handle keyboard resize on iOS
+  if (window.visualViewport) {
+    const adjustForKeyboard = () => {
+      const app = document.getElementById('mainApp');
+      if (app) {
+        app.style.height = window.visualViewport.height + 'px';
+      }
+    };
+    window.visualViewport.addEventListener('resize', adjustForKeyboard);
+    window.visualViewport.addEventListener('scroll', adjustForKeyboard);
+  }
+</script>
 </body>
 </html>

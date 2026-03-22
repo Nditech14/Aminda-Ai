@@ -1,7 +1,7 @@
 /**
  * NavigationController
  * Single Responsibility: Handle sidebar navigation, panel switching,
- * and mobile sidebar open/close toggling.
+ * mobile sidebar drawer, and overlay toggling.
  */
 export class NavigationController {
   init() {
@@ -9,20 +9,30 @@ export class NavigationController {
     document.querySelectorAll('.nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
         this.#activateMode(btn.dataset.mode);
-        // Auto-close sidebar on mobile
         if (window.innerWidth <= 768) this.#closeSidebar();
       });
     });
 
     // Mobile menu open
-    document.getElementById('mobileMenuBtn')?.addEventListener('click', () => this.#openSidebar());
+    document.getElementById('mobileMenuBtn')
+      ?.addEventListener('click', () => this.#openSidebar());
 
-    // Mobile sidebar close button
-    document.getElementById('sidebarClose')?.addEventListener('click', () => this.#closeSidebar());
+    // Sidebar close button
+    document.getElementById('sidebarClose')
+      ?.addEventListener('click', () => this.#closeSidebar());
 
-    // Reset profile button
+    // Overlay click closes sidebar
+    document.getElementById('sidebarOverlay')
+      ?.addEventListener('click', () => this.#closeSidebar());
+
+    // Close sidebar on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') this.#closeSidebar();
+    });
+
+    // Reset profile
     document.getElementById('resetBtn')?.addEventListener('click', () => {
-      if (confirm('Reset your profile and API key? You will go through onboarding again.')) {
+      if (confirm('Reset your profile? You will go through onboarding again.')) {
         localStorage.clear();
         window.location.reload();
       }
@@ -38,9 +48,13 @@ export class NavigationController {
 
   #openSidebar() {
     document.getElementById('sidebar')?.classList.add('open');
+    document.getElementById('sidebarOverlay')?.classList.add('show');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
   }
 
   #closeSidebar() {
     document.getElementById('sidebar')?.classList.remove('open');
+    document.getElementById('sidebarOverlay')?.classList.remove('show');
+    document.body.style.overflow = '';
   }
 }

@@ -37,7 +37,7 @@
 
 /* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+html, body { height: 100%; min-height: 100dvh; }
 
 body {
   background: var(--bg);
@@ -198,7 +198,11 @@ body {
 /* ══════════════════════════════════════════════════════════
    LAYOUT
 ══════════════════════════════════════════════════════════ */
-.app  { display: flex; flex-direction: column; height: 100vh; }
+.app  {
+  display: flex; flex-direction: column;
+  height: 100vh;
+  height: 100dvh; /* dynamic viewport — accounts for mobile browser chrome */
+}
 .main { display: flex; flex: 1; overflow: hidden; min-height: 0; }
 
 /* ══════════════════════════════════════════════════════════
@@ -1096,6 +1100,7 @@ img, svg { max-width: 100%; }
     background: var(--surface);
     border-top: 2px solid var(--purple-mid);
     box-shadow: 0 -4px 20px rgba(108,43,217,0.12);
+    z-index: 50;
   }
   .input-wrap {
     padding: 13px 16px;
