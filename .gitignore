@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Zip files
+*.zip
+
+# Node (if ever added)
+node_modules/
+
+# ⚠️  NEVER commit a file that contains your real API key in plain text.
+# The key in Config.js uses a placeholder replaced by GitHub Actions at build time.
+# For local dev only — keep your real key out of git.

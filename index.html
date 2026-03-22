@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyMind — Built by Tech Sisters | Woman Techsters Bootcamp 5.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════ ONBOARDING OVERLAY ═══════════════════ -->
+<div class="onboarding-overlay" id="onboardingOverlay">
+  <div class="onboarding-card">
+
+    <div class="ob-bootcamp-badge">🚀 Woman Techsters Bootcamp 5.0</div>
+
+    <div class="ob-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <span class="logo-text">Study<span class="gold">Mind</span></span>
+    </div>
+
+    <p class="ob-tagline">Learn Smarter. Not Harder. — Built by Tech Sisters 💜</p>
+    <div class="ob-divider"></div>
+    <h2 class="ob-title">Welcome, Scholar 👋</h2>
+    <p class="ob-subtitle">Let's personalise your experience. Takes 30 seconds.</p>
+
+    <!-- Step 1: Name -->
+    <div class="ob-step active" id="ob-step-1">
+      <label class="ob-label">What should Aminda call you?</label>
+      <input class="ob-input" id="obName" type="text" placeholder="Enter your first name…" autocomplete="off" />
+      <button class="ob-btn" id="obStep1Btn">Continue →</button>
+    </div>
+
+    <!-- Step 2: Subject -->
+    <div class="ob-step" id="ob-step-2">
+      <label class="ob-label">What are you studying?</label>
+      <div class="ob-subjects" id="obSubjects">
+        <div class="ob-subject selected" data-subject="General">📚 General</div>
+        <div class="ob-subject" data-subject="Mathematics">➗ Mathematics</div>
+        <div class="ob-subject" data-subject="Sciences">🔬 Sciences</div>
+        <div class="ob-subject" data-subject="Law">⚖️ Law</div>
+        <div class="ob-subject" data-subject="Business">📈 Business</div>
+        <div class="ob-subject" data-subject="History">🏛️ History</div>
+        <div class="ob-subject" data-subject="Literature">✍️ Literature</div>
+        <div class="ob-subject" data-subject="Technology">💻 Technology</div>
+        <div class="ob-subject" data-subject="Medicine">🏥 Medicine</div>
+      </div>
+      <button class="ob-btn" id="obStep2Btn">Continue →</button>
+    </div>
+
+    <!-- Step 3: Level -->
+    <div class="ob-step" id="ob-step-3">
+      <label class="ob-label">What level are you at?</label>
+      <div class="ob-levels">
+        <div class="ob-level selected" data-level="Secondary School">
+          <span class="ob-level-icon">🌱</span>
+          <div>
+            <div class="ob-level-title">Secondary School</div>
+            <div class="ob-level-sub">WAEC / NECO / A-Level</div>
+          </div>
+        </div>
+        <div class="ob-level" data-level="Undergraduate">
+          <span class="ob-level-icon">🎓</span>
+          <div>
+            <div class="ob-level-title">Undergraduate</div>
+            <div class="ob-level-sub">Bachelor's degree</div>
+          </div>
+        </div>
+        <div class="ob-level" data-level="Postgraduate">
+          <span class="ob-level-icon">🔬</span>
+          <div>
+            <div class="ob-level-title">Postgraduate</div>
+            <div class="ob-level-sub">Master's / PhD</div>
+          </div>
+        </div>
+        <div class="ob-level" data-level="Professional">
+          <span class="ob-level-icon">💼</span>
+          <div>
+            <div class="ob-level-title">Professional</div>
+            <div class="ob-level-sub">Certifications / CPD</div>
+          </div>
+        </div>
+      </div>
+      <button class="ob-btn" id="obStep3Btn">Start Learning 🚀</button>
+    </div>
+
+    <div class="ob-steps-dots">
+      <div class="ob-dot active" id="dot-1"></div>
+      <div class="ob-dot" id="dot-2"></div>
+      <div class="ob-dot" id="dot-3"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ TOAST ═══════════════════ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════════════════ MAIN APP ═══════════════════ -->
+<div class="app hidden" id="mainApp">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <div class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <span class="logo-text">Study<span class="gold">Mind</span></span>
+          <span class="logo-tagline">Learn Smarter. Not Harder.</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-user" id="headerUser"></div>
+      <div class="hd"></div>
+      <div class="header-badge">
+        <div class="status-dot" id="apiStatus"></div>
+        <span>Aminda is ready</span>
+      </div>
+      <div class="hd"></div>
+      <button class="reset-btn" id="resetBtn" title="Reset profile">↩</button>
+    </div>
+  </header>
+
+  <!-- MOTIVATIONAL BANNER -->
+  <div class="quote-banner" id="quoteBanner">
+    <span class="quote-icon">✦</span>
+    <span class="quote-text" id="quoteText"></span>
+    <span class="quote-icon">✦</span>
+  </div>
+
+  <div class="main">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-close" id="sidebarClose">✕</button>
+
+      <div class="sb-section">
+        <div class="sb-label">Study Tools</div>
+        <button class="nav-item active" data-mode="chat">
+          <div class="nav-icon">💬</div>
+          <div class="nav-text">
+            <span class="nav-title">Chat with Aminda</span>
+            <span class="nav-desc">Your personal AI tutor</span>
+          </div>
+        </button>
+        <button class="nav-item" data-mode="summary">
+          <div class="nav-icon">⚡</div>
+          <div class="nav-text">
+            <span class="nav-title">Summarise</span>
+            <span class="nav-desc">Instant smart summaries</span>
+          </div>
+        </button>
+        <button class="nav-item" data-mode="qa">
+          <div class="nav-icon">🎯</div>
+          <div class="nav-text">
+            <span class="nav-title">Quiz Generator</span>
+            <span class="nav-desc">Auto Q&amp;A from your docs</span>
+          </div>
+        </button>
+        <button class="nav-item" data-mode="explain">
+          <div class="nav-icon">🔬</div>
+          <div class="nav-text">
+            <span class="nav-title">Deep Explain</span>
+            <span class="nav-desc">Concepts simplified</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-label">Subject Mode</div>
+        <div class="subject-mode-display" id="subjectModeDisplay">
+          <span class="subject-mode-icon" id="subjectModeIcon">📚</span>
+          <div>
+            <div class="subject-mode-name" id="subjectModeName">General</div>
+            <div class="subject-mode-sub">Tap to change</div>
+          </div>
+        </div>
+        <div class="subject-picker hidden" id="subjectPicker">
+          <div class="sp-item" data-subject="General" data-icon="📚">📚 General</div>
+          <div class="sp-item" data-subject="Mathematics" data-icon="➗">➗ Mathematics</div>
+          <div class="sp-item" data-subject="Sciences" data-icon="🔬">🔬 Sciences</div>
+          <div class="sp-item" data-subject="Law" data-icon="⚖️">⚖️ Law</div>
+          <div class="sp-item" data-subject="Business" data-icon="📈">📈 Business</div>
+          <div class="sp-item" data-subject="History" data-icon="🏛️">🏛️ History</div>
+          <div class="sp-item" data-subject="Literature" data-icon="✍️">✍️ Literature</div>
+          <div class="sp-item" data-subject="Technology" data-icon="💻">💻 Technology</div>
+          <div class="sp-item" data-subject="Medicine" data-icon="🏥">🏥 Medicine</div>
+        </div>
+      </div>
+
+      <div class="sb-section">
+        <div class="sb-label">Study Material</div>
+        <div class="upload-zone" id="uploadZone">
+          <div class="upload-icon-box">📎</div>
+          <strong>Drop files here</strong><br />
+          PDF, image, or text<br />
+          <span class="upload-hint">or click to browse</span>
+          <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.txt" multiple hidden />
+        </div>
+        <div class="file-list" id="fileList"></div>
+      </div>
+
+      <div class="sb-footer">
+        <div class="sb-footer-logo">💜</div>
+        <div class="sb-footer-text">
+          Built by <strong>Tech Sisters</strong><br/>
+          Woman Techsters Bootcamp 5.0
+        </div>
+      </div>
+    </aside>
+
+    <!-- PANELS -->
+    <div class="chat-area">
+
+      <!-- CHAT PANEL -->
+      <div class="panel active" id="panel-chat">
+        <div class="messages" id="messages">
+          <div class="welcome" id="welcome">
+            <div class="sage-avatar-lg">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h2 id="welcomeHeading">Good to see you, <i>Scholar</i> 👋</h2>
+            <div class="ng-meaning hidden" id="welcomeMeaning"></div>
+            <div class="welcome-rule"></div>
+            <p id="welcomeSubtext">I'm <strong>Aminda</strong>, your personal AI tutor. Drop your study material and let's get to work.</p>
+            <div class="chips" id="welcomeChips">
+              <div class="chip">Explain this topic simply</div>
+              <div class="chip">What are the key points?</div>
+              <div class="chip">Give me 5 quiz questions</div>
+              <div class="chip">Summarise in bullet points</div>
+              <div class="chip">What should I focus on?</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-bar">
+          <div class="input-row">
+            <div class="input-wrap">
+              <textarea id="chatInput" rows="1" placeholder="Ask Aminda anything about your material…"></textarea>
+            </div>
+            <button class="send-btn" id="sendBtn" title="Send (Enter)">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </div>
+          <div class="input-hint">Press <strong>Enter</strong> to send &nbsp;·&nbsp; <strong>Shift+Enter</strong> for new line</div>
+        </div>
+      </div>
+
+      <!-- SUMMARY PANEL -->
+      <div class="panel" id="panel-summary">
+        <div class="tool-panel">
+          <div class="tool-head">
+            <h2>Smart Summariser <span class="tool-tag">Aminda AI</span></h2>
+            <p>Drop your lecture notes or textbook pages and Aminda will extract the key ideas — ready for your revision in seconds.</p>
+          </div>
+          <div class="tool-divider"></div>
+          <div>
+            <div class="field-label">Summary Format</div>
+            <div class="opt-grid">
+              <div class="opt-card selected" data-opt="brief">
+                <div class="opt-icon">⚡</div>
+                <div><div class="opt-label">Brief Overview</div><div class="opt-sub">3–5 concise sentences</div></div>
+              </div>
+              <div class="opt-card" data-opt="bullets">
+                <div class="opt-icon">📝</div>
+                <div><div class="opt-label">Key Takeaways</div><div class="opt-sub">Structured bullet points</div></div>
+              </div>
+              <div class="opt-card" data-opt="detailed">
+                <div class="opt-icon">📖</div>
+                <div><div class="opt-label">Full Summary</div><div class="opt-sub">Comprehensive breakdown</div></div>
+              </div>
+              <div class="opt-card" data-opt="simple">
+                <div class="opt-icon">🧒</div>
+                <div><div class="opt-label">Plain Language</div><div class="opt-sub">Simple, no jargon</div></div>
+              </div>
+            </div>
+          </div>
+          <button class="action-btn" id="summaryBtn"><span id="summaryBtnText">Generate Summary</span></button>
+          <div class="result-box" id="summaryResult">
+            <div class="result-header">
+              <div class="result-title">📄 Summary by Aminda</div>
+              <button class="copy-btn" id="summaryCopyBtn">📋 Copy</button>
+            </div>
+            <div class="result-body" id="summaryText"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ PANEL -->
+      <div class="panel" id="panel-qa">
+        <div class="tool-panel">
+          <div class="tool-head">
+            <h2>Quiz Generator <span class="tool-tag">Aminda AI</span></h2>
+            <p>Aminda will build a personalised quiz from your material. Test yourself, reveal answers, and lock in knowledge before your exam.</p>
+          </div>
+          <div class="tool-divider"></div>
+          <div>
+            <div class="field-label">Number of Questions</div>
+            <div class="num-grid">
+              <div class="num-card selected" data-qa-opt="5">5</div>
+              <div class="num-card" data-qa-opt="10">10</div>
+              <div class="num-card" data-qa-opt="15">15</div>
+              <div class="num-card" data-qa-opt="20">20</div>
+            </div>
+          </div>
+          <div>
+            <div class="field-label">Difficulty Level</div>
+            <div class="opt-grid">
+              <div class="opt-card selected" data-diff-opt="easy">
+                <div class="opt-icon">🌱</div>
+                <div><div class="opt-label">Foundation</div><div class="opt-sub">Core concepts</div></div>
+              </div>
+              <div class="opt-card" data-diff-opt="medium">
+                <div class="opt-icon">🔥</div>
+                <div><div class="opt-label">Intermediate</div><div class="opt-sub">Applied knowledge</div></div>
+              </div>
+              <div class="opt-card" data-diff-opt="hard">
+                <div class="opt-icon">⚡</div>
+                <div><div class="opt-label">Advanced</div><div class="opt-sub">Deep analysis</div></div>
+              </div>
+            </div>
+          </div>
+          <button class="action-btn" id="qaBtn"><span id="qaBtnText">Generate Questions</span></button>
+          <div class="qa-result-wrap" id="qaResult">
+            <div class="qa-result-header">
+              <div class="qa-result-title">Practice Questions</div>
+              <button class="copy-btn" id="qaCopyBtn">📋 Copy all</button>
+            </div>
+            <div class="qa-list" id="qaList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPLAIN PANEL -->
+      <div class="panel" id="panel-explain">
+        <div class="tool-panel">
+          <div class="tool-head">
+            <h2>Deep Explain <span class="tool-tag">Aminda AI</span></h2>
+            <p>Type any concept and Aminda will break it down with examples, analogies, and key facts — matched perfectly to your level.</p>
+          </div>
+          <div class="tool-divider"></div>
+          <div>
+            <div class="field-label">Concept or Topic</div>
+            <textarea class="concept-input" id="explainInput" placeholder="e.g. Explain photosynthesis, or What is Newton's Third Law?…"></textarea>
+          </div>
+          <div>
+            <div class="field-label">Explanation Level</div>
+            <div class="opt-grid">
+              <div class="opt-card" data-level-opt="beginner">
+                <div class="opt-icon">🌱</div>
+                <div><div class="opt-label">Beginner</div><div class="opt-sub">No prior knowledge needed</div></div>
+              </div>
+              <div class="opt-card selected" data-level-opt="student">
+                <div class="opt-icon">📚</div>
+                <div><div class="opt-label">Student</div><div class="opt-sub">Secondary / university</div></div>
+              </div>
+              <div class="opt-card" data-level-opt="advanced">
+                <div class="opt-icon">🔬</div>
+                <div><div class="opt-label">Advanced</div><div class="opt-sub">Technical depth</div></div>
+              </div>
+            </div>
+          </div>
+          <button class="action-btn" id="explainBtn"><span id="explainBtnText">Ask Aminda to Explain</span></button>
+          <div class="result-box" id="explainResult">
+            <div class="result-header">
+              <div class="result-title">💡 Aminda's Explanation</div>
+              <button class="copy-btn" id="explainCopyBtn">📋 Copy</button>
+            </div>
+            <div class="result-body" id="explainText"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /chat-area -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
