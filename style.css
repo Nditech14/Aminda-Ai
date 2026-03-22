@@ -797,11 +797,8 @@ header::after {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ══════════════════════════════════════════════════════════
-   MOBILE RESPONSIVE
-══════════════════════════════════════════════════════════ */
+
 @media (max-width: 768px) {
-  .mobile-menu-btn { display: flex; }
 
   .sidebar {
     position: fixed; top: 0; left: 0; bottom: 0; z-index: 200;
@@ -944,8 +941,8 @@ header::after {
   font-weight: 500;
 }
 
+
 @media (max-width: 768px) {
-  #welcomeHeading { font-size: 20px; }
   .ng-meaning { max-width: 100%; }
   .ng-meaning-inner { padding: 12px 14px; }
 }
@@ -1012,4 +1009,171 @@ header::after {
   font-size: 12px;
   color: var(--ink2);
   line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — ALL SCREEN SIZES
+   Breakpoints: 480px (phone) | 768px (tablet) | 1024px (small laptop)
+══════════════════════════════════════════════════════════ */
+
+img, svg { max-width: 100%; }
+
+/* ── Large screens (1280px+) ── */
+@media (min-width: 1280px) {
+  .messages    { padding: 32px 48px; }
+  .input-bar   { padding: 18px 48px 24px; }
+  .tool-panel  { padding: 36px 48px; }
+}
+
+/* ── Small laptop / large tablet (769px – 1024px) ── */
+@media (max-width: 1024px) {
+  .sidebar { width: 220px; }
+
+  .tool-panel { padding: 24px 28px; }
+  .messages   { padding: 22px 24px; }
+  .input-bar  { padding: 14px 24px 18px; }
+
+  .opt-grid { gap: 7px; }
+  .opt-card { padding: 10px 13px; }
+
+  .welcome h2, #welcomeHeading { font-size: 22px; }
+}
+
+/* ── Tablet / large phone (481px – 768px) ── */
+@media (max-width: 768px) {
+
+  /* Sidebar becomes a slide-in drawer */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 200;
+    width: 280px;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 32px rgba(0,0,0,0.2);
+    transition: transform 0.28s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .sidebar.open    { transform: translateX(0); }
+  .sidebar-close   { display: block; }
+  .mobile-menu-btn { display: flex; }
+
+  /* Sidebar overlay */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    background: rgba(26,20,37,0.5);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.show { display: block; }
+
+  /* Header */
+  header         { padding: 0 16px; height: 54px; }
+  .logo-tagline  { display: none; }
+  .header-user   { display: none; }
+  .reset-btn     { font-size: 11px; padding: 4px 8px; }
+
+  /* Quote banner */
+  .quote-banner  { padding: 7px 16px; }
+  .quote-text    { font-size: 11px; }
+
+  /* Panels */
+  .messages   { padding: 18px 16px; gap: 16px; }
+  .input-bar  { padding: 10px 14px 14px; }
+  .tool-panel { padding: 20px 16px; gap: 18px; }
+
+  /* Welcome screen */
+  .welcome          { padding: 28px 16px; gap: 12px; }
+  .welcome h2,
+  #welcomeHeading   { font-size: 20px; }
+  .welcome p        { font-size: 13px; }
+  .welcome-emblem   { width: 60px; height: 60px; font-size: 26px; }
+  .sage-avatar-lg   { width: 60px; height: 60px; border-radius: 16px; }
+  .sage-avatar-lg svg { width: 28px; height: 28px; }
+
+  /* Chips */
+  .chips { gap: 6px; }
+  .chip  { padding: 6px 12px; font-size: 12px; }
+
+  /* Messages */
+  .msg         { max-width: 100%; }
+  .msg-content { font-size: 13.5px; padding: 11px 14px; }
+
+  /* Tool panels */
+  .tool-head h2     { font-size: 20px; }
+  .opt-grid         { gap: 7px; }
+  .opt-card         { padding: 10px 12px; gap: 8px; }
+  .opt-label        { font-size: 13px; }
+  .opt-sub          { font-size: 11px; }
+  .action-btn       { width: 100%; justify-content: center; padding: 13px 20px; }
+
+  /* Number cards */
+  .num-grid { gap: 6px; }
+  .num-card { width: 46px; height: 40px; font-size: 13px; }
+
+  /* Result box */
+  .result-body { max-height: 320px; padding: 16px; font-size: 13.5px; }
+
+  /* Q&A */
+  .qa-answer { padding-left: 16px; }
+
+  /* Onboarding */
+  .onboarding-card  { padding: 24px 18px; margin: 12px; max-width: 100%; }
+  .ob-title         { font-size: 20px; }
+  .ob-levels        { gap: 6px; }
+  .ob-level         { padding: 10px 12px; }
+  .ob-subjects      { gap: 6px; }
+  .ob-subject       { padding: 6px 12px; font-size: 12.5px; }
+
+  /* Nigerian greeting */
+  #welcomeHeading   { font-size: 20px; }
+  .ng-meaning       { max-width: 100%; }
+  .ng-meaning-inner { padding: 12px 14px; }
+}
+
+/* ── Small phones (max 480px) ── */
+@media (max-width: 480px) {
+
+  header        { height: 50px; }
+  .logo-text    { font-size: 16px; }
+  .logo-mark    { width: 30px; height: 30px; }
+
+  .quote-banner { display: none; } /* hide on very small screens */
+
+  .messages   { padding: 14px 12px; }
+  .input-bar  { padding: 8px 12px 12px; }
+  .tool-panel { padding: 16px 12px; }
+
+  .welcome        { padding: 20px 12px; }
+  .welcome h2,
+  #welcomeHeading { font-size: 18px; }
+  .welcome p      { font-size: 12.5px; }
+
+  .msg-content { font-size: 13px; padding: 10px 12px; }
+  .msg-avatar  { width: 28px; height: 28px; font-size: 10px; }
+
+  .tool-head h2 { font-size: 18px; }
+  .opt-card     { padding: 9px 10px; }
+
+  .onboarding-card { padding: 20px 14px; }
+  .ob-title        { font-size: 18px; }
+  .ob-btn          { padding: 11px 18px; font-size: 13.5px; }
+
+  /* Full-width send button area */
+  .send-btn { width: 40px; height: 40px; }
+
+  .num-card { width: 42px; height: 38px; font-size: 12.5px; }
+}
+
+/* ── Landscape phones ── */
+@media (max-width: 768px) and (orientation: landscape) {
+  .welcome        { padding: 16px; gap: 8px; }
+  .welcome-emblem,
+  .sage-avatar-lg { display: none; }
+  .welcome h2,
+  #welcomeHeading { font-size: 17px; }
+  .chips          { margin-top: 0; }
+  .messages       { padding: 12px 14px; }
 }
